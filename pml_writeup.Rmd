@@ -79,8 +79,14 @@ As there are many features, random forest gives decent performance. I also use p
 model <- train(classe ~ ., data=training, method="rf", preProcess="pca")
 # cross validation
 pred1 <- predict(mod1, crossv)
-confusionMatrix(pred1, crossv$classe)
+```
 
+```{r}
+load("pred1.RData")
+confusionMatrix(pred1, crossv$classe)
+```
+
+```
 # out of sample error
 pred2 <- predict(mod1, crossv_test)
 accuracy <- sum(pred2 == crossv_test$classe) / length(pred2)
